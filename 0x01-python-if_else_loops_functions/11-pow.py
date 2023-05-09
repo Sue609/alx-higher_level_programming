@@ -8,5 +8,5 @@ def pow(a, b):
         return 1
 
     if b == 1:
-        return a 
+        return a
     return a * pow(a, b - 1)
