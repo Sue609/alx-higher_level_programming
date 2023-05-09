@@ -1,9 +1,13 @@
 #!/usr/bin/python3
 
 def pow(a, b):
-    result = 1
+    if b < 0:
+        return 1 / pow(a, -b)
 
-    for i in renge(b):
-        result *= a
+    if b == 0:
+        return 1
 
-    return result
+    if b == 1:
+        return a
+    
+    return a * pow(a, b - 1)
