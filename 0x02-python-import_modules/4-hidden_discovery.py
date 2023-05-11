@@ -1,20 +1,11 @@
 #!/usr/bin/python3
 
-import dis
-import marshal
 if __name__ == "__main__":
+    import hidden_4
 
-    with open("hidden_4.pyc", "rb") as f:
-        code = marshal.load(f)
+    names = dir(hidden_4)
 
-    names = set()
-    for instr in dis.Bytecode(code):
-
-        if instr.opname == "LOAD_CONST":
-            const = instr.arg
-
-            if isinstance(const, str) and not const.startswith("__"):
-                names.add(const)
-
-        for name in sorted(names):
+    for name in names:
+        if name[:2] != "__":
             print(name)
+
