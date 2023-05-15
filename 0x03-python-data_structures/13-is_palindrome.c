@@ -1,5 +1,4 @@
 #include "lists.h"
-#include <stddef.h>
 /**
  * is_palindrome - a function that checks if a number is a palinfrome.
  * @head: a double pointer
@@ -8,11 +7,8 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head;
-	listint_t *fast = *head;
-	listint_t *secondHalf = NULL;
-	listint_t *prev = NULL;
-	listint_t *temp = NULL;
+	listint_t *slow = *head, *fast = *head;
+	listint_t *secondHalf = NULL, *prev = NULL, *temp = NULL;
 	int isPalindrome = 1;
 
 	if (*head == NULL || (*head)->next == NULL)
