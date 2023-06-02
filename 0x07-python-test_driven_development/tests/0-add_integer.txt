@@ -1,0 +1,59 @@
+
+The add integer function is used to add two integers a and b.
+If only one arguement is passed to the function, b will have a default value of 98.
+
+Args:
+	a (int): The fisrt integer if the value of b is float it is typecasted to an integer
+	b (int): If no arguement passed b has a default value of 98.
+
+Returns:
+	int: The function returns the sum of a and b as an integer.
+
+Raises: 
+	TypeError: If a and be are not integers it raises a TypeError.
+
+Examples:
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+	>>> add_integer(3, -10)
+	-7
+
+	>>> add_integer(18, 2)
+	20
+
+	floats are typecasted to integers 
+
+	>>> add_integer(10.5, 5)
+	15
+
+	>>> add_integer(3.5, 2.5)
+	5
+
+	>>> add_integer(2)
+	100
+
+	In our function add_integer it also accepts strings and displays an error because its not a float or int
+
+	>>> add_integer("zi", 10)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(23, "susan")
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+	>>> add_integer(None)
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
+	>>> add_integer(2.5, None)
+	Traceback (most recent call last):
+	TypeError: b must be an integer
+
+
+	The function will fail if both arguements are not integers or floats. A TypeError will be displayed as output
+	
+	>>> add_integer("Hey", "Susan")
+	Traceback (most recent call last):
+	TypeError: a must be an integer
+
