@@ -1,0 +1,102 @@
+matrix_divided is a function that divides all the elements of the matrix. The matrix must be a list of integers. The elements of the matrix should be divided by div, rounded to two decimal places.
+
+Args:
+	The function accepts integers and floats to a matrix
+
+Return:
+	The function returns a new matrix which can either be made up of floats or ints.
+
+Raises:
+	TypeErrror and ZeroDivisionError
+
+Example:
+	>>> matrix_divided = __import__('2-matrix_divided').matrix_divided
+
+The matrix should only be made up of integers and floats
+	>>> matrix = [
+		[3, 6, 9]
+		[12, 15, 18]
+		]
+	>>> print(matrix_divided(matrix, 3))
+	 [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0]]
+
+	>>> matrix = [
+		[1, 2, 3],
+		[4, 5, 6]
+		]
+	>>> print(matrix_divided(matrix, 3))
+	[[0.33, 0.67, 1.0], [1.33, 1.67, 2.0]]
+
+The matrix should accomodate negative integers
+	>>> matrix = [
+		[-2, 4, -6]
+		[-3, 9, 12]
+		]
+
+	>>> print(matrix_divided(matrix, 3))
+	[[-0.67, 1.33, -2.0], [-1.0, 3.0, 4.0]]
+	
+	>>> matrix = [1, 2, 3]
+	>>> print(matrix_divided(matrix, 3))
+	Traceback (most recent call last):
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+
+The matrix should be able to divide float numbers:
+	>>> matrix = [
+		[12.5, 8.6, 6.9]
+		[6.6, 4.8, 3.1]
+		]
+
+	>>> print(matrix_divided(matrix, 3))
+	[[4.17, 2.87, 2.3], [2.2, 1.6, 1.03]]
+
+If matrix is not an int or float raise error exception:
+	>>> matrix = [
+		[1, 3, "pi"]
+		[24, 6, 9]
+		]
+
+	>>> print(matrix_divided(matrix, 3))
+	Traceback (most recent call last):
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+When the rows of the matrix are not the same raise a TypeError:
+	>>> matrix = [
+		[1, 2, 3, 4]
+		[5, 6, 7]
+		]
+
+	>>> print(matrix_divided(matrix, 3))
+	Traceback (most recent call last):
+	TypeError: Each row of the matrix must have the same size
+
+	>>> matrix = [
+		[1, 2, 3]
+		[4, 5]
+		]
+
+	>>> print(matrix_divided(matrix, 3))
+	Traceback (most recent call last):
+	TypeError: Each row of the matrix must have the same size
+
+Div must be a number otherwise we print a typeeror
+	>>> matrix = [
+		[1, 2, 3]
+		[4, "str", 6]
+		]
+
+	>>> print(matrix_divided(matrix, "sue"))
+	Traceback (most recent call last):
+	TypeError: div must be a number
+
+Div can't be zero otherwise rause a ZeroDivisionError.
+	>>> matrix = [
+		[1, 2, 3]
+		[4, 5, -1]
+		]
+
+	>>> print(matrix_divided(matrix, 0))
+	Traceback (most recent call last):
+	ZeroDivisionError: division by zero
+
