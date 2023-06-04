@@ -1,0 +1,31 @@
+The text_indentation function prints a text with new lines after each of these characters: ., ? and :
+There should be no spaces at the begginning or the end of each printed line.
+
+Args:
+	text (str): The text should be string.
+
+Returns:
+	The function prints a text with a new line.
+Raises:
+	TypeError exception with the message text must be a string
+Examples:
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+	>>> text_indentation("Hey girl.")
+	Hey girl.
+	<BLANKLINE>
+	<BLANKLINE>
+
+	>>> text_indentation("Hey girl. How are you?")
+	Hey girl.
+	<BLANKLINE>
+	 How are you?
+	<BLANKLINE>
+	<BLANKLINE>
+
+	>>> text_indentation("		")
+	<BLANKLINE>
+
+	>>> text_indentation("Hey. ")
+	Hey.
+	<BLANKLINE>
