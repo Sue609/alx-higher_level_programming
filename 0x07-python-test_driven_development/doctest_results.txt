@@ -1,0 +1,78 @@
+Trying:
+    say_my_name = __import__('3-say_my_name').say_my_name
+Expecting nothing
+ok
+Trying:
+    say_my_name("Susan", "Kamau")
+Expecting:
+    My name is Susan Kamau
+ok
+Trying:
+    say_my_name("Susan")
+Expecting:
+    My name is Susan
+**********************************************************************
+File "./tests/3-say_my_name.txt", line 18, in 3-say_my_name.txt
+Failed example:
+    say_my_name("Susan")
+Expected:
+    My name is Susan
+Got:
+    My name is Susan 
+Trying:
+    say_my_name(23, "Susan")
+Expecting:
+    Traceback (most recent call last):
+    TypeError: first_name must be a string
+ok
+Trying:
+    say_my_name("susan", 23)
+Expecting:
+    Traceback (most recent call last):
+    TypeError: last_name must be a string
+ok
+Trying:
+    say_my_name(None)
+Expecting:
+    Traceback (most recent last call):
+    TypeError : first_name must be a string 
+**********************************************************************
+File "./tests/3-say_my_name.txt", line 30, in 3-say_my_name.txt
+Failed example:
+    say_my_name(None)
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.8/doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest 3-say_my_name.txt[5]>", line 1, in <module>
+        say_my_name(None)
+      File "/alx-higher_level_programming/0x07-python-test_driven_development/3-say_my_name.py", line 6, in say_my_name
+        raise TypeError("first_name must be a string")
+    TypeError: first_name must be a string
+Trying:
+    say_my_name()
+Expecting:
+    Traceback (most recent last call):
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+**********************************************************************
+File "./tests/3-say_my_name.txt", line 34, in 3-say_my_name.txt
+Failed example:
+    say_my_name()
+Exception raised:
+    Traceback (most recent call last):
+      File "/usr/lib/python3.8/doctest.py", line 1336, in __run
+        exec(compile(example.source, filename, "single",
+      File "<doctest 3-say_my_name.txt[6]>", line 1, in <module>
+        say_my_name()
+    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+Trying:
+    say_my_name("Susan Kamau", "Monicah")
+Expecting:
+    My name is Susan Kamau Monicah
+ok
+**********************************************************************
+1 items had failures:
+   3 of   8 in 3-say_my_name.txt
+8 tests in 1 items.
+5 passed and 3 failed.
+***Test Failed*** 3 failures.
