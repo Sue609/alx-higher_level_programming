@@ -3,8 +3,6 @@
 
 
 class Rectangle:
-
-    def __init__(self):
-        """Initializing a rectangle."""
-        pass
+    """Represents a rectangle."""
+    pass
 
