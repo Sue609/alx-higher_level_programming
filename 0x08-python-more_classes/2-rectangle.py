@@ -44,3 +44,11 @@ class Rectangle:
             raise ValueError("width must be >= 0")
         self.__height = value
 
+    def area(self):
+        """Calculates the area of the rectangle."""
+        return self.__width * self.__height
+
+    def perimeter(self):
+        """Calculates the peremeter of the rectangle."""
+        return 2 * (self.__width + self.__height)
+
