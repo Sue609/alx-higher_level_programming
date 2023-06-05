@@ -4,25 +4,23 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
-    txt = text.strip()
-    line_break_chars = ['.', '?', ':']
+    if len(text) == 0:
+        return
 
-    result = ""
+    new_text = ""
+    delimiter = [".", "?", ":"]
+    i = 0
 
-    for char in text:
-        result += char
+    while i < len(text):
+        new_text += text[i]
+        if text[i] in delimiter and i < len(text) - 1 and text[i+1] == ' ':
+            new_text += "\n\n"
+            i += 1
 
-        if char in line_break_chars:
-            result += '\n\n'
+        i += 1
 
-    lines = result.split('\n')
-    formatted_lines = [line.strip() for line in lines]
+    print(new_text)
 
-    if formatted_lines[-1] == "":
-        formatted_lines = formatted_lines[:-1]
-    result = '\n'.join(formatted_lines)
-
-    print(result)
 if __name__ == "__main__":
     import doctest
     doctest.testfile("5-text_indentation.txt")

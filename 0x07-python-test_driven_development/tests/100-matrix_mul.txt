@@ -45,7 +45,6 @@ The funstion only accepts integers and floats
 	Traceback (most recent call last):
 	TypeError: m_a must be a list or m_b must be a list
 
-	>>> print(matrix_mul([1, 2], [[3, 4]]))
+	>>> print(matrix_mul([[1, 2]], [[3, 4]]))
 	Traceback: (most recent call last):
-	TypeError: m_a must be a list of lists or m_b must be a list of lists
-	
+	ValueError: m_a and m_b can't be multiplied
