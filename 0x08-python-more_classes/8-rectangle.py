@@ -10,7 +10,6 @@ class Rectangle:
 
     def __init__(self, width=0, height=0):
         """Initializes a rectangle with the given width and weight.
-        
         Args:
             width (int): The width of the new rectangle.
             height (int): The height of the new rectangle.
@@ -61,7 +60,10 @@ class Rectangle:
         """Returns a string representation of the rectangle."""
         if self.__width == 0 or self.__height == 0:
             return ("")
-        return "\n".join(str(self.print_symbol) * self.__width for _ in range(self.__height))
+        return "\n".join(
+            str(self.print_symbol) * self.__width
+            for _ in range(self.__height)
+        )
 
     def __repr__(self):
         """should return a string representation of the rectangle"""
