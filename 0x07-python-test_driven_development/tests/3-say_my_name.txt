@@ -16,7 +16,7 @@ Example:
 
 If only one name is passed to the function it will still work and print the name
 	>>> say_my_name("Susan")
-	My name is Susan
+	My name is Susan 
 
 If we pass integers we will get an error
 	>>> say_my_name(23, "Susan")
