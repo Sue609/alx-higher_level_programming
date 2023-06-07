@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 
 """In this module we have the function defined."""
+
+
 def say_my_name(first_name, last_name=""):
     """
     Prints the name based on the provided first name and last name.
