@@ -1,6 +1,21 @@
 #!/usr/bin/python3
+"""We introduce the function text_indentation in this function"""
+
 
 def text_indentation(text):
+    """
+    Prints the given text with indentation based on certain delimiters.
+
+    Args:
+        text (str): The input text.
+
+    Raises:
+        TypeError: If the text is not a string.
+
+    Returns:
+        None
+    """
+
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
@@ -20,7 +35,3 @@ def text_indentation(text):
         i += 1
 
     print(new_text)
-
-if __name__ == "__main__":
-    import doctest
-    doctest.testfile("5-text_indentation.txt")
