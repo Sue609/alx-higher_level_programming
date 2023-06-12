@@ -22,7 +22,7 @@ class MyInt(int):
             The inverted result of the equality check.
         """
         
-        return super().__ne__(other)
+        return (super().__ne__(other))
 
     def __ne__(self, other):
         """
@@ -35,4 +35,4 @@ class MyInt(int):
             The inverted result of the inequality check.
         """
 
-        return super().__eq__(other)
+        return (super().__eq__(other))
