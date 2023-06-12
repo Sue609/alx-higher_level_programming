@@ -6,7 +6,6 @@ This module introduces a new class Square that inherits from the rectangle.
 Rectangle = __import__('9-rectangle').Rectangle
 
 
-
 class Square(Rectangle):
     """
     Represents a square shape.
