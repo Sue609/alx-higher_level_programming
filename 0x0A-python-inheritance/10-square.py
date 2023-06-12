@@ -89,6 +89,11 @@ class Rectangle(BaseGeometry):
         return "[Rectangle] {}/{}".format(self.__width, self.__height)
 
 
+"""
+we introdece a new class inheritance.
+"""
+
+
 class Square(Rectangle):
     """
     Represents a square shape.
@@ -125,10 +130,7 @@ class Square(Rectangle):
 
     def area(self):
         """
-        Calculates and returns the area of the square.
-
-        Returns:
-            The area of the square.
+        Calculates and returns the area of the square.     
         """
 
         return self.__size ** 2
