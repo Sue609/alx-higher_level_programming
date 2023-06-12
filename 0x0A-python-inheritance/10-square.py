@@ -40,7 +40,6 @@ class Square(Rectangle):
         Returns a string representation of the square.
 
         Returns:
-            The string representation of the square in the format:
             [Square] <size>/<size>
         """
 
