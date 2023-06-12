@@ -6,9 +6,7 @@ Module introduces a dunction for checking boolen expression.
 
 def is_kind_of_class(obj, a_class):
     """
-    Function that returns true if the object is an instance of or if the
-    object is an instance of a class that inherited from, the specified class 
-    or otherwise false.
+    Function that returns trueof false.
 
     Args:
         obj: The object to check.
