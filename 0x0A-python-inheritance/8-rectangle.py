@@ -36,7 +36,7 @@ class BaseGeometry:
 
 
 """
-This modeule introduces a new function.
+This modeule introduces a new class.
 """
 
 
