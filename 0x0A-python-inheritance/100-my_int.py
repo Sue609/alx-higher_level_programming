@@ -7,8 +7,6 @@ This module introduces a class called MyInt.
 class MyInt(int):
     """
     The class inherits from int. MyInt is a rebel.
-
-    MyInt has == and != operators inverted.
     """
 
     def __eq__(self, other):
