@@ -13,7 +13,7 @@ class MyInt(int):
         """
         Overrides the equality (==) operator.
         """
-        
+
         return (super().__ne__(other))
 
     def __ne__(self, other):
