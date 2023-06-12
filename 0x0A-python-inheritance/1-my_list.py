@@ -12,7 +12,7 @@ class MyList(list):
     Args:
         list(int): The list to be sorted.
     Returns:
-        Nothing.
+        Nothing tto be returned by the function.
     """
 
     def print_sorted(self):
