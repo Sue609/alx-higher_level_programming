@@ -10,4 +10,7 @@ def to_json_string(my_obj):
     This function returns the JSON representation of an object.
     """
 
-    return json.dumps(my_obj)
+    try:
+        return json.dumps(my_obj)
+    except TypeError as e:
+        raise TypeError(f"{my_obj} is not JSON serializable")
