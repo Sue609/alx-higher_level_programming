@@ -6,7 +6,7 @@ This module introduces a function.
 
 def class_to_json(obj):
     """
-    Convert an object to a dictionary representation with simple data structures for JSON serialization.
+    Convert an object to a dictionary representation 
     """
 
     if isinstance(obj, str) or isinstance(obj, int) or isinstance(obj, bool):
