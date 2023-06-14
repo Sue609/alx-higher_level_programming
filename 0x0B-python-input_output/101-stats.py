@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Introduces a module to the file.
+"""
+
+
 import sys
 
 status_codes = {'200': 0, '301': 0, '400': 0, '401': 0, '403': 0, '404': 0, '405': 0, '500': 0}
@@ -6,6 +11,10 @@ total_file_size = 0
 count = 0
 
 try:
+    """
+    Read input from standard input.
+    """
+
     for line in sys.stdin:
         count += 1
         input_parts = line.split(' ')
@@ -23,6 +32,10 @@ try:
                     print("{}: {}".format(code, status_codes[code]))
 
 except KeyboardInterrupt:
+    """
+    Handle keyboard interrupt and prints final file.
+    """
+
     print("File size: {}".format(total_file_size))
     for code in sorted(status_codes.keys()):
         if status_codes[code] != 0:
