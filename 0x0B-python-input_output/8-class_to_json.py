@@ -8,6 +8,7 @@ def class_to_json(obj):
     """
     Convert an object to a dictionary representation with simple data structures for JSON serialization.
     """
+
     if isinstance(obj, str) or isinstance(obj, int) or isinstance(obj, bool):
         return obj
     elif isinstance(obj, list):
@@ -17,6 +18,7 @@ def class_to_json(obj):
     elif hasattr(obj, "__dict__"):
         return class_to_json(obj.__dict__)
     elif hasattr(obj, "__slots__"):
-        return class_to_json({slot: getattr(obj, slot) for slot in obj.__slots__})
+        return class_to_json({slot: getattr(obj, slot)
+            for slot in obj.__slots__})
     else:
         return str(obj)
