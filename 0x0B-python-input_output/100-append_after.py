@@ -6,12 +6,12 @@ Module that introduces a function.
 
 def append_after(filename="", search_string="", new_string=""):
     """
-    Appends a line of text after each line containing a specific string in a file.
+    Appends a line of text in a file.
 
     Args:
         filename (str): The name of the file to modify.
         search_string (str): The string to search for in each line.
-        new_string (str): The string to insert after each line containing the search_string.
+        new_string (str): The string to insert.
 
     Returns:
         None
@@ -25,4 +25,3 @@ def append_after(filename="", search_string="", new_string=""):
             if search_string in line:
                 file.write(new_string)
         file.truncate()
-
