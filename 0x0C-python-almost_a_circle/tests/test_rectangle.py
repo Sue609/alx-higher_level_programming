@@ -117,5 +117,35 @@ class TestRectangleClass(unittest.TestCase):
             rectangle.display()
             self.assertEqual(fake_stdout.getvalue(), expected_output)
 
+    def test_str_format_with_id(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        expected_output = "[Rectangle] (12) 2/1 - 4/6"
+        self.assertEqual(str(rectangle), expected_output)
+
+    def test_str_format_without_id(self):
+        rectangle = Rectangle(5, 5, 1)
+        expected_output = "[Rectangle] (20) 1/0 - 5/5"
+        self.assertEqual(str(rectangle), expected_output)
+
+    def test_str_format_with_large_numbers(self):
+        rectangle = Rectangle(99, 99, 99, 99, 99)
+        expected_output = "[Rectangle] (99) 99/99 - 99/99"
+        self.assertEqual(str(rectangle), expected_output)
+
+    def test_display_with_positioning(self):
+        rectangle = Rectangle(4, 3, 2, 1)
+        expected_output = "\n\n  ####\n  ####\n  ####\n"
+        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
+            rectangle.display()
+            self.assertEqual(fake_stdout.getvalue(), expected_output)
+
+    def test_display_with_zero_dimensions(self):
+        rectangle = Rectangle(0, 0, 0, 0)
+        expected_output = ""
+        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
+            rectangle.display()
+            self.assertEqual(fake_stdout.getvalue(), expected_output)
+
+
 if __name__ == '__main__':
     unittest.main()

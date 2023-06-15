@@ -120,8 +120,18 @@ class Rectangle(Base):
         Prints the character '#' to the stdout.
         """
 
+        for _ in range(self.y):
+            print()
         for _ in range(self.height):
-            print('#' * self.width)
+            print(" " * self.x + '#' * self.width)
+
+    def __str__(self):
+        """
+        Method that defines how an object should be
+        represented as a string.
+        """
+
+        return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
 
 if __name__ == '__main__':
