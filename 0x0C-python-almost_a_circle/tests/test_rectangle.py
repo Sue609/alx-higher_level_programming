@@ -45,6 +45,37 @@ class TestRectangleClass(unittest.TestCase):
         rectangle.y = 4
         self.assertEqual(rectangle.y, 4)
 
+    def test_string_height(self):
+        with self.assertRaises(TypeError):
+            Rectangle(10, "2")
+
+    def test_string_width(self):
+        with self.assertRaises(TypeError):
+            Rectangle("2", 10)
+
+    def test_width_zero(self):
+        with self.assertRaises(ValueError):
+            Rectangle(0, 2)
+
+    def test_height_zero(self):
+        with self.assertRaises(ValueError):
+            Rectangle(2, 0)
+
+    def test_negative_x(self):
+        with self.assertRaises(ValueError):
+            Rectangle(10, 2, -1, 0)
+
+    def test_negative_width(self):
+        with self.assertRaises(ValueError):
+            Rectangle(-10, 2)
+
+    def test_negative_height(self):
+        with self.assertRaises(ValueError):
+            Rectangle(2, -10)
+
+    def test_negative_y(self):
+        with self.assertRaises(ValueError):
+            Rectangle(10, 2, 1, -1)
 
 if __name__ == '__main__':
     unittest.main()
