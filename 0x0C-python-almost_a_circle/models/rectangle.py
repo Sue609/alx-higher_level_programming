@@ -13,6 +13,13 @@ class Rectangle(Base):
     def __init__(self, width, height, x=0, y=0, id=None):
         """
         A class constructor that initializes private attributes.
+
+        Args:
+            width (int): Width of the rectangle.
+            height (int): Height of the rectangle.
+            x (int): X-coordinate of the rectangle's position.
+            y (int): Y-coordinate of the rectangle's position.
+            id (int): Identifier of the rectangle.
         """
 
         super().__init__(id=id)
@@ -107,6 +114,14 @@ class Rectangle(Base):
         """
 
         return self.width * self.height
+
+    def display(self):
+        """
+        Prints the character '#' to the stdout.
+        """
+
+        for _ in range(self.height):
+            print('#' * self.width)
 
 
 if __name__ == '__main__':

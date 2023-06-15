@@ -4,6 +4,10 @@ import unittest
 
 from models.rectangle import Rectangle
 
+from unittest.mock import patch
+
+import io
+
 class TestRectangleClass(unittest.TestCase):
     def test_id_values(self):
         rectangle = Rectangle(10, 2, 0, 0, 12)
@@ -84,6 +88,34 @@ class TestRectangleClass(unittest.TestCase):
     def test_area_with_other_elements(self):
         rectangle = Rectangle(8, 7, 0, 0, 12)
         self.assertEqual(rectangle.area(), 56)
+
+    def test_display(self):
+        rectangle = Rectangle(3, 2)
+        expected_output = "###\n###\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_stdout:
+            rectangle.display()
+            self.assertEqual(fake_stdout.getvalue(), expected_output)
+
+    def test_display_large_rectangle(self):
+        rectangle = Rectangle(10, 5)
+        expected_output = "##########\n##########\n##########\n##########\n##########\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_stdout:
+            rectangle.display()
+            self.assertEqual(fake_stdout.getvalue(), expected_output)
+
+    def test_display_square(self):
+        rectangle = Rectangle(5, 5)
+        expected_output = "#####\n#####\n#####\n#####\n#####\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_stdout:
+            rectangle.display()
+            self.assertEqual(fake_stdout.getvalue(), expected_output)
+
+    def test_display_different_dimensions(self):
+        rectangle = Rectangle(4, 3)
+        expected_output = "####\n####\n####\n"
+        with patch("sys.stdout", new=io.StringIO()) as fake_stdout:
+            rectangle.display()
+            self.assertEqual(fake_stdout.getvalue(), expected_output)
 
 if __name__ == '__main__':
     unittest.main()
