@@ -33,6 +33,36 @@ class TestBaseClass(unittest.TestCase):
         subclass = Subclass()
         self.assertEqual(subclass.id, 3)
 
+    def test_to_json_string_empty(self):
+        result = Base.to_json_string([])
+        self.assertEqual(result, "[]")
+
+    def test_to_json_none(self):
+        result = Base.to_json_string(None)
+        self.assertEqual(result, "[]")
+
+    def test_to_json_single_dict(self):
+        list_of_dicts = [{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]
+        result = Base.to_json_string(list_of_dicts)
+        self.assertEqual(result, '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}]')
+
+    def test_to_json_string_multiple_dicts(self):
+        list_of_dicts = [
+                {"x": 2, "width": 10, "id": 1, "height": 7, "y": 8},
+                {"x": 5, "width": 6, "id": 2, "height": 3, "y": 4}
+            ]
+        result = Base.to_json_string(list_of_dicts)
+        self.assertEqual(result, '[{"x": 2, "width": 10, "id": 1, "height": 7, "y": 8}, '
+                                 '{"x": 5, "width": 6, "id": 2, "height": 3, "y": 4}]')
+
+    def test_to_json_string_nested_dicts(self):
+        nested_dicts = [
+                {"x": 2, "nested": {"a": 1, "b": 2}},
+                {"x": 5, "nested": {"c": 3, "d": 4}}
+            ]
+        result = Base.to_json_string(nested_dicts)
+        self.assertEqual(result, '[{"x": 2, "nested": {"a": 1, "b": 2}}, '
+                             '{"x": 5, "nested": {"c": 3, "d": 4}}]')
 
 if __name__ == '__main__':
     unittest.main()
