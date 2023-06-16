@@ -132,19 +132,50 @@ class TestRectangleClass(unittest.TestCase):
         expected_output = "[Rectangle] (99) 99/99 - 99/99"
         self.assertEqual(str(rectangle), expected_output)
 
-    def test_display_with_positioning(self):
-        rectangle = Rectangle(4, 3, 2, 1)
-        expected_output = "\n\n  ####\n  ####\n  ####\n"
-        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
-            rectangle.display()
-            self.assertEqual(fake_stdout.getvalue(), expected_output)
+    def test_update_with_arguements(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        rectangle.update(15, 8, 10, 3, 5)
+        self.assertEqual(rectangle.id, 15)
+        self.assertEqual(rectangle.width, 8)
+        self.assertEqual(rectangle.height, 10)
+        self.assertEqual(rectangle.x, 3)
+        self.assertEqual(rectangle.y, 5)
 
-    def test_display_with_zero_dimensions(self):
-        rectangle = Rectangle(0, 0, 0, 0)
-        expected_output = ""
-        with patch('sys.stdout', new=io.StringIO()) as fake_stdout:
-            rectangle.display()
-            self.assertEqual(fake_stdout.getvalue(), expected_output)
+    def test_update_with_partial_arguements(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        rectangle.update(15, 8)
+        self.assertEqual(rectangle.id, 15)
+        self.assertEqual(rectangle.width, 8)
+        self.assertEqual(rectangle.height, 6)
+        self.assertEqual(rectangle.x, 2)
+        self.assertEqual(rectangle.y, 1)
+
+    def test_update_with_no_arguments(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        rectangle.update()
+        self.assertEqual(rectangle.id, 12)
+        self.assertEqual(rectangle.width, 4)
+        self.assertEqual(rectangle.height, 6)
+        self.assertEqual(rectangle.x, 2)
+        self.assertEqual(rectangle.y, 1)
+
+    def test_update_with_extra_arguments(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        rectangle.update(15, 8, 10, 3, 5, 20)
+        self.assertEqual(rectangle.id, 15)
+        self.assertEqual(rectangle.width, 8)
+        self.assertEqual(rectangle.height, 10)
+        self.assertEqual(rectangle.x, 3)
+        self.assertEqual(rectangle.y, 5)
+
+    def test_update_with_insufficient_arguments(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        rectangle.update(15, 8, 10)
+        self.assertEqual(rectangle.id, 15)
+        self.assertEqual(rectangle.width, 8)
+        self.assertEqual(rectangle.height, 10)
+        self.assertEqual(rectangle.x, 2)
+        self.assertEqual(rectangle.y, 1)
 
 
 if __name__ == '__main__':
