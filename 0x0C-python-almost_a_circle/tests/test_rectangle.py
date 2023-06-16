@@ -159,17 +159,6 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(rectangle.x, 2)
         self.assertEqual(rectangle.y, 1)
 
-"""
-    def test_update_with_extra_arguments(self):
-        rectangle = Rectangle(4, 6, 2, 1, 12)
-        rectangle.update(15, 8, 10, 3, 5, 20)
-        self.assertEqual(rectangle.id, 15)
-        self.assertEqual(rectangle.width, 8)
-        self.assertEqual(rectangle.height, 10)
-        self.assertEqual(rectangle.x, 3)
-        self.assertEqual(rectangle.y, 5)
-"""
-
     def test_update_with_insufficient_arguments(self):
         rectangle = Rectangle(4, 6, 2, 1, 12)
         rectangle.update(15, 8, 10)

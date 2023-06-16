@@ -46,5 +46,19 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        """
+        Updating the class by adding public method.
+        """
+
+        if args:
+            attribute = ['id', 'size', 'x', 'y']
+            for i, arg in enumerate(args):
+                setattr(self, attribute[i], arg)
+        else:
+            for attr, value in kwargs.items():
+                setattr(self, attr, value)
+
+
 if __name__ == '__main__':
     unittest.main()
