@@ -133,21 +133,21 @@ class Rectangle(Base):
 
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """
         Method that updates the attributes of the Rectangle.
+        Args:
+            *args: No keyworded arguements
+            **kwargs: Keyworded arguements rep attributes.
         """
 
-        if len(args) >= 1:
-            self.id = args[0]
-        if len(args) >= 2:
-            self.width = args[1]
-        if len(args) >= 3:
-            self.height = args[2]
-        if len(args) >= 4:
-            self.x = args[3]
-        if len(args) >= 5:
-            self.y = args[4]
+        if args:
+            attr_names = ['id', 'width', 'height', 'x', 'y']
+            for i, arg in enumerate(args):
+                setattr(self, attr_names[i], arg)
+        elif kwargs:
+            for attr, value in kwargs.items():
+                setattr(self, attr, value)
 
 
 if __name__ == '__main__':
