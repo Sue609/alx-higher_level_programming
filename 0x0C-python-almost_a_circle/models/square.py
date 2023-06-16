@@ -59,6 +59,18 @@ class Square(Rectangle):
             for attr, value in kwargs.items():
                 setattr(self, attr, value)
 
+    def to_dictionary(self):
+        """
+        Method to update the class square to a dictionary.
+        """
+
+        return {
+                'id': self.id,
+                'size': self.size,
+                'x': self.x,
+                'y': self.y
+            }
+
 
 if __name__ == '__main__':
     unittest.main()
