@@ -149,6 +149,19 @@ class Rectangle(Base):
             for attr, value in kwargs.items():
                 setattr(self, attr, value)
 
+    def to_dictionary(self):
+        """
+        Method to update a dictionary representation of Rectangle.
+        """
+
+        return {
+                'x': self.x,
+                'y': self.y,
+                'id': self.id,
+                'height': self.height,
+                'width': self.width
+            }
+
 
 if __name__ == '__main__':
     unittest.main()

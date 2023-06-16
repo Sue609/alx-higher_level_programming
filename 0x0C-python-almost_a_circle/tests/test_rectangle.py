@@ -168,6 +168,51 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(rectangle.x, 2)
         self.assertEqual(rectangle.y, 1)
 
+    def test_to_dictionary(self):
+        rectangle = Rectangle(10, 2, 1, 9)
+
+        dictionary = rectangle.to_dictionary()
+
+        self.assertEqual(dictionary['x'], rectangle.x)
+        self.assertEqual(dictionary['y'], rectangle.y)
+        self.assertEqual(dictionary['id'], rectangle.id)
+        self.assertEqual(dictionary['height'], rectangle.height)
+        self.assertEqual(dictionary['width'], rectangle.width)
+
+    def test_test_to_dictionary_update(self):
+        rectangle = Rectangle(10, 2, 1, 9)
+        dictionary = rectangle.to_dictionary()
+        rectangle.update(**dictionary)
+        self.assertEqual(rectangle.id, dictionary['id'])
+        self.assertEqual(rectangle.width, dictionary['width'])
+        self.assertEqual(rectangle.height, dictionary['height'])
+        self.assertEqual(rectangle.x, dictionary['x'])
+        self.assertEqual(rectangle.y, dictionary['y'])
+
+    def test_to_dictionary_empty_rectangle(self):
+        rectangle = Rectangle(1, 2, 3, 4)
+        rectangle.width = 1
+        rectangle.height = 1
+        rectangle.x = 1
+        rectangle.y = 1
+        dictionary = rectangle.to_dictionary()
+        self.assertEqual(dictionary, {'id': 25, 'width': 1, 'height': 1, 'x': 1, 'y': 1})
+    
+    def test_to_dictionary_2(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        dictionary = rectangle.to_dictionary()
+        self.assertIsInstance(dictionary, dict)
+        self.assertCountEqual(dictionary.keys(), ['id', 'width', 'height', 'x', 'y'])
+        self.assertEqual(dictionary['id'], 12)
+        self.assertEqual(dictionary['width'], 4)
+        self.assertEqual(dictionary['height'], 6)
+        self.assertEqual(dictionary['x'], 2)
+        self.assertEqual(dictionary['y'], 1)
+
+    def test_to_dictionary_after_update(self):
+        rectangle = Rectangle(4, 6, 2, 1, 12)
+        rectangle.update(15, 8, 10, 3, 5)
+        dictionary = rectangle.to_dictionary()
 
 if __name__ == '__main__':
     unittest.main()
