@@ -37,6 +37,29 @@ class Base:
         else:
             return json.dumps(list_dictionaries)
 
+    @classmethod
+    def save_to_file(cls, list_objs):
+        """
+        Method that writes json string rep to a file.
+        """
+
+        file_name = cls.__name__ + ".json"
+        objects = []
+        if list_objs is not None:
+            objects = [obj.to_dictionary() for obj in list_objs]
+        with open(file_name, "w") as file:
+            file.write(cls.to_json_string(objects))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """
+        Returns the list of JSON string representation.
+        """
+
+        if json_string is None or json_string == "":
+            return []
+        return json.loads(json_string)
+
 
 if __name__ == '__main__':
     unittest.main()

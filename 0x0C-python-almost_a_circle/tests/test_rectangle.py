@@ -190,14 +190,11 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(rectangle.y, dictionary['y'])
 
     def test_to_dictionary_empty_rectangle(self):
-        rectangle = Rectangle(1, 2, 3, 4)
-        rectangle.width = 1
-        rectangle.height = 1
-        rectangle.x = 1
-        rectangle.y = 1
+        rectangle = Rectangle(1, 1, 1, 1)
         dictionary = rectangle.to_dictionary()
-        self.assertEqual(dictionary, {'id': 25, 'width': 1, 'height': 1, 'x': 1, 'y': 1})
-    
+        expected = {'id': 25, 'width': 1, 'height': 1, 'x': 1, 'y': 1}
+        self.assertEqual(dictionary, expected)
+
     def test_to_dictionary_2(self):
         rectangle = Rectangle(4, 6, 2, 1, 12)
         dictionary = rectangle.to_dictionary()
@@ -213,6 +210,50 @@ class TestRectangleClass(unittest.TestCase):
         rectangle = Rectangle(4, 6, 2, 1, 12)
         rectangle.update(15, 8, 10, 3, 5)
         dictionary = rectangle.to_dictionary()
+
+    def test_save_none_to_file(self):
+        Rectangle.save_to_file(None)
+        with open("Rectangle.json", "r") as file:
+            contents = file.read()
+            expected = '[]'
+            self.assertEqual(contents, expected)
+
+    def test_from_json_string_empty_string(self):
+        json_string = ""
+        expected_output = []
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, expected_output)
+
+    def test_from_json_string_none(self):
+        json_string = None
+        expected_output = []
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, expected_output)
+
+    def test_from_json_string_valid_json(self):
+        json_string = '[{"height": 4, "width": 10, "id": 89}, {"height": 7, "width": 1, "id": 7}]'
+        expected_output = [{"height": 4, "width": 10, "id": 89}, {"height": 7, "width": 1, "id": 7}]
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, expected_output)
+
+    def test_from_json_string_empty_list(self):
+        json_string = "[]"
+        expected_output = []
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, expected_output)
+
+    def test_from_json_string_single_dict(self):
+        json_string = '[{"height": 4, "width": 10, "id": 89}]'
+        expected_output = [{"height": 4, "width": 10, "id": 89}]
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, expected_output)
+
+    def test_from_json_string_nested_dicts(self):
+        json_string = '[{"rectangle": {"height": 4, "width": 10, "id": 89}}, {"square": {"size": 5, "id": 7}}]'
+        expected_output = [{"rectangle": {"height": 4, "width": 10, "id": 89}}, {"square": {"size": 5, "id": 7}}]
+        result = Rectangle.from_json_string(json_string)
+        self.assertEqual(result, expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -64,5 +64,6 @@ class TestBaseClass(unittest.TestCase):
         self.assertEqual(result, '[{"x": 2, "nested": {"a": 1, "b": 2}}, '
                              '{"x": 5, "nested": {"c": 3, "d": 4}}]')
 
+    
 if __name__ == '__main__':
     unittest.main()
