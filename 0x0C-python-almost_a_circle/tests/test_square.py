@@ -88,7 +88,7 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(square.size, 5)
         self.assertEqual(square.x, 0)
         self.assertEqual(square.y, 0)
-        self.assertEqual(square.id, 30)
+        self.assertEqual(square.id, 32)
 
     def test_update_with_positional_arguments(self):
         square = Square(5)
@@ -122,6 +122,14 @@ class TestSquareClass(unittest.TestCase):
         square = Square(5, 2, 3, 1)
         expected_str = "[Square] (1) 2/3 - 5"
         self.assertEqual(str(square), expected_str)
+
+    def test_create_square(self):
+        square_dict = {'id': 2, 'size': 4, 'x': 0, 'y': 0}
+        square = Square.create(**square_dict)
+        self.assertEqual(square.id, 2)
+        self.assertEqual(square.size, 4)
+        self.assertEqual(square.x, 0)
+        self.assertEqual(square.y, 0)
 
 
 if __name__ == '__main__':

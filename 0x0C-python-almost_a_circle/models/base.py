@@ -60,6 +60,23 @@ class Base:
             return []
         return json.loads(json_string)
 
+    @classmethod
+    def create(cls, **dictionary):
+        """
+        Returns an instance with all attributes alredy set.
+        """
+
+        if cls.__name__ == "Rectangle":
+            dummy = cls(1, 1)
+        elif cls.__name__ == "Square":
+            dummy = cls(1)
+        else:
+            dummy = None
+
+        if dummy is not None:
+            dummy.update(**dictionary)
+        return dummy
+
 
 if __name__ == '__main__':
     unittest.main()

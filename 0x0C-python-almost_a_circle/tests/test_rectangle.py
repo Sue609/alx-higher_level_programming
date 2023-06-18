@@ -124,7 +124,7 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_str_format_without_id(self):
         rectangle = Rectangle(5, 5, 1)
-        expected_output = "[Rectangle] (20) 1/0 - 5/5"
+        expected_output = "[Rectangle] (21) 1/0 - 5/5"
         self.assertEqual(str(rectangle), expected_output)
 
     def test_str_format_with_large_numbers(self):
@@ -192,7 +192,7 @@ class TestRectangleClass(unittest.TestCase):
     def test_to_dictionary_empty_rectangle(self):
         rectangle = Rectangle(1, 1, 1, 1)
         dictionary = rectangle.to_dictionary()
-        expected = {'id': 25, 'width': 1, 'height': 1, 'x': 1, 'y': 1}
+        expected = {'id': 26, 'width': 1, 'height': 1, 'x': 1, 'y': 1}
         self.assertEqual(dictionary, expected)
 
     def test_to_dictionary_2(self):
@@ -253,6 +253,15 @@ class TestRectangleClass(unittest.TestCase):
         expected_output = [{"rectangle": {"height": 4, "width": 10, "id": 89}}, {"square": {"size": 5, "id": 7}}]
         result = Rectangle.from_json_string(json_string)
         self.assertEqual(result, expected_output)
+
+    def test_create_rectangle(self):
+        rectangle_dict = {'id': 1, 'width': 3, 'height': 5, 'x': 1, 'y': 2}
+        rectangle = Rectangle.create(**rectangle_dict)
+        self.assertEqual(rectangle.id, 1)
+        self.assertEqual(rectangle.width, 3)
+        self.assertEqual(rectangle.height, 5)
+        self.assertEqual(rectangle.x, 1)
+        self.assertEqual(rectangle.y, 2)
 
 
 if __name__ == '__main__':
