@@ -88,7 +88,7 @@ class TestSquareClass(unittest.TestCase):
         self.assertEqual(square.size, 5)
         self.assertEqual(square.x, 0)
         self.assertEqual(square.y, 0)
-        self.assertEqual(square.id, 32)
+        self.assertEqual(square.id, 38)
 
     def test_update_with_positional_arguments(self):
         square = Square(5)

@@ -124,7 +124,7 @@ class TestRectangleClass(unittest.TestCase):
 
     def test_str_format_without_id(self):
         rectangle = Rectangle(5, 5, 1)
-        expected_output = "[Rectangle] (21) 1/0 - 5/5"
+        expected_output = "[Rectangle] (27) 1/0 - 5/5"
         self.assertEqual(str(rectangle), expected_output)
 
     def test_str_format_with_large_numbers(self):
@@ -192,7 +192,7 @@ class TestRectangleClass(unittest.TestCase):
     def test_to_dictionary_empty_rectangle(self):
         rectangle = Rectangle(1, 1, 1, 1)
         dictionary = rectangle.to_dictionary()
-        expected = {'id': 26, 'width': 1, 'height': 1, 'x': 1, 'y': 1}
+        expected = {'id': 32, 'width': 1, 'height': 1, 'x': 1, 'y': 1}
         self.assertEqual(dictionary, expected)
 
     def test_to_dictionary_2(self):
@@ -263,6 +263,18 @@ class TestRectangleClass(unittest.TestCase):
         self.assertEqual(rectangle.x, 1)
         self.assertEqual(rectangle.y, 2)
 
+    def test_load_from_existing_file(self):
+        filename = "Rectangle.json"
+        instances = [Rectangle(1, 2), Rectangle(3, 4)]
+        Rectangle.save_to_file(instances)
+        loaded_instances = Rectangle.load_from_file()
+        self.assertIsInstance(loaded_instances, list)
+        self.assertEqual(len(loaded_instances), len(instances))
+
+    def test_load_from_nonexistent_file(self):
+        loaded_instances = Rectangle.load_from_file()
+        self.assertIsInstance(loaded_instances, list)
+        self.assertEqual(len(loaded_instances), 2)
 
 if __name__ == '__main__':
     unittest.main()

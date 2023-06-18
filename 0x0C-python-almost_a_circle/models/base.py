@@ -77,6 +77,17 @@ class Base:
             dummy.update(**dictionary)
         return dummy
 
+    @classmethod
+    def load_from_file(cls):
+        filename = cls.__name__ + ".json"
+        try:
+            with open(filename, 'r') as file:
+                data = json.load(file)
+                instances = [cls.create(**dictionary) for dictionary in data]
+                return instances
+        except FileNotFoundError:
+            return []
+
 
 if __name__ == '__main__':
     unittest.main()
