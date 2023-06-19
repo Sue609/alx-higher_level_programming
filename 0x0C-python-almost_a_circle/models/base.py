@@ -3,6 +3,7 @@
 This module intoduces a the first class.
 """
 import json
+import csv
 
 
 class Base:
@@ -79,6 +80,10 @@ class Base:
 
     @classmethod
     def load_from_file(cls):
+        """
+        Method that returns a list of instances.
+        """
+
         filename = cls.__name__ + ".json"
         try:
             with open(filename, 'r') as file:
@@ -87,6 +92,37 @@ class Base:
                 return instances
         except FileNotFoundError:
             return []
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Method that serializes in CVS
+        Args:
+            list_objs(list): A list of instances.
+        """
+
+        if list_objs is None or len(list_objs) == 0:
+            return
+        filename = cls.__name__ + ".csv"
+        with open(filename, 'w', newline='') as file:
+            writer = csv.writer(file)
+            for obj in list_objs:
+                row = obj.to_csv_row()
+                writer.writerow(row)
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Deserializes instances from a JSON file.
+        Returns:
+            list: A list of instances.
+        """
+
+        instances = []
+        filename = cls.__name__ + ".csv"
+
+        if not os.path.isfile(filename):
+            return instances
 
 
 if __name__ == '__main__':
