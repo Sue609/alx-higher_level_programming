@@ -27,7 +27,7 @@ class Rectangle(Base):
         """
         Getter for the width private attribute.
         """
-        
+
         return self.__width
 
     @width.setter
@@ -121,8 +121,7 @@ class Rectangle(Base):
 
     def __str__(self):
         """
-        Method that defines how an object should be
-        represented as a string.
+        Method that defines represention of object
         """
 
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - {self.width}/{self.height}"
