@@ -71,6 +71,22 @@ class Square(Rectangle):
                 'y': self.y
             }
 
+    def to_csv_row(self):
+        """
+        Converts the Square object to a CSV row format.
+        """
+
+        return [self.id, self.size, self.x, self.y]
+
+    @classmethod
+    def from_csv_row(cls, row):
+        """
+        Creates a new Square object from a CSV row.
+        """
+
+        id, size, x, y = map(int, row)
+        return cls(size, x, y, id)
+
 
 if __name__ == '__main__':
     unittest.main()

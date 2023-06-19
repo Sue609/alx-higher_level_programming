@@ -158,6 +158,22 @@ class Rectangle(Base):
                 'width': self.width
             }
 
+    def to_csv_row(self):
+        """
+        Converts the Rectangle object to a CSV row format.
+        """
+
+        return [self.id, self.width, self.height, self.x, self.y]
+
+    @classmethod
+    def from_csv_row(cls, row):
+        """
+        Creates a new Rectangle object from a CSV row.
+        """
+
+        id, width, height, x, y = map(int, row)
+        return cls(width, height, x, y, id)
+
 
 if __name__ == '__main__':
     unittest.main()

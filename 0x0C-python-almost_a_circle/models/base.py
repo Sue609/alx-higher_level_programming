@@ -95,16 +95,12 @@ class Base:
 
     @classmethod
     def save_to_file_csv(cls, list_objs):
-        """
-        Method that serializes in CVS
-        Args:
-            list_objs(list): A list of instances.
-        """
 
-        if list_objs is None or len(list_objs) == 0:
-            return
+        """
+        Serializes a list of objects to a CSV file.
+        """
         filename = cls.__name__ + ".csv"
-        with open(filename, 'w', newline='') as file:
+        with open(filename, mode='w', newline='') as file:
             writer = csv.writer(file)
             for obj in list_objs:
                 row = obj.to_csv_row()
@@ -113,16 +109,20 @@ class Base:
     @classmethod
     def load_from_file_csv(cls):
         """
-        Deserializes instances from a JSON file.
-        Returns:
-            list: A list of instances.
+        Deserializes objects from a CSV file turns a list of objects.
         """
 
-        instances = []
         filename = cls.__name__ + ".csv"
-
-        if not os.path.isfile(filename):
-            return instances
+        try:
+            with open(filename, mode='r', newline='') as file:
+                reader = csv.reader(file)
+                objs = []
+                for row in reader:
+                    obj = cls.from_csv_row(row)
+                    objs.append(obj)
+                return objs
+        except FileNotFoundError:
+            return []
 
 
 if __name__ == '__main__':
