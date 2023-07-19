@@ -4,4 +4,4 @@ USE information_schema;
 
 SELECT table_name
 FROM tables
-WHERE table_schema = '%s';
+WHERE table_schema = 'hbtn_0c_0';
