@@ -3,7 +3,7 @@
 Script that computes and prints a factorial.
 */
 
-function factorial(n) {
+function factorial (n) {
   if (isNaN(n) || n <= 0) {
     return 1;
   } else {
