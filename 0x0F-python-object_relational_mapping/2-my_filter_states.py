@@ -7,6 +7,7 @@ This module introduces a new function.
 import MySQLdb
 import sys
 
+
 def display_value(username, password, database, nameSearch):
     """
     Script that displays all values in the state table.
@@ -25,6 +26,9 @@ def display_value(username, password, database, nameSearch):
 
     for row in rows:
         print(row)
+
+    cur.close()
+    db.close()
 
 
 if __name__ == "__main__":
