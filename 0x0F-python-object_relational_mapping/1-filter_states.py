@@ -1,9 +1,10 @@
 #!/usr/bin/python3
+"""Script that lists all states from the database hbtn_0e_0_usa"""
+
+
 import MySQLdb
 import sys
-"""
-This module introduces a function.
-"""
+
 
 def list_states(username, password, database):
     """
@@ -12,7 +13,7 @@ def list_states(username, password, database):
     """
 
     db = MySQLdb.connect(host="localhost", user=username,
-                    passwd=password, db=database, port=3306)
+                         passwd=password, db=database, port=3306)
     cur = db.cursor()
 
     cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
@@ -22,6 +23,7 @@ def list_states(username, password, database):
         print(row)
     cur.close()
     db.close()
+
 
 if __name__ == "__main__":
     username = sys.argv[1]
