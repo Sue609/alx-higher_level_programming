@@ -1,14 +1,16 @@
 #!/usr/bin/python3
-import MySQLdb
-import sys
 """
 This module lists all the states in our database.
 """
 
 
+import MySQLdb
+import sys
+
+
 def list_states(username, password, database):
     """
-    Function that writes a script.
+    Retrieve and print the list of states from the database.
     """
 
     db = MySQLdb.connect(host="localhost", user=username,
