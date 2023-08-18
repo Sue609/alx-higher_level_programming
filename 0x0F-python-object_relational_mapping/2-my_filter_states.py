@@ -18,16 +18,15 @@ def display_value(username, password, database, nameSearch):
                          passwd=password, db=database,
                          port=3306)
     cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE %s "
-                "ORDER BY id ASC", (nameSearch,))
+
+    query = ("SELECT * FROM states WHERE name = '{}' "
+             "ORDER BY id ASC".format(nameSearch))
+    cur.execute(query)
 
     rows = cur.fetchall()
 
     for row in rows:
         print(row)
-
-    cur.close()
-    db.close()
 
 
 if __name__ == "__main__":
