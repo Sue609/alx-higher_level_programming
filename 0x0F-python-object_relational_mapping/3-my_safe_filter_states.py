@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""This module introduces a function."""
+
+
 import sys
 import MySQLdb
 
@@ -22,6 +25,7 @@ def injection(username, password, database, state_name):
 
     cur.close()
     db.close()
+
 
 if __name__ == "__main__":
     username = sys.argv[1]
