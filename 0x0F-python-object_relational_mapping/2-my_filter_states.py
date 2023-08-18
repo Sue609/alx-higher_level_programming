@@ -4,9 +4,8 @@ This module introduces a new function.
 """
 
 
-import sys
 import MySQLdb
-
+import sys
 
 def display_value(username, password, database, nameSearch):
     """
