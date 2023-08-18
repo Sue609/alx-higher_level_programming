@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import MySQLdb
 """
 This module introduces a new function.
 """
