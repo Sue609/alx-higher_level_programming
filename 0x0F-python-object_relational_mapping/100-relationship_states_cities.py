@@ -18,7 +18,7 @@ def create_california_with_sf(username, password, dbname):
 
     db_url = f'mysql+mysqldb://{username}:{password}@localhost/{dbname}'
     engine = create_engine(db_url, pool_pre_ping=True)
-    
+
     Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
