@@ -17,18 +17,16 @@ def list_cities_by_state(username, password, database, state_name):
     db = MySQLdb.connect(host="localhost", user=username,
                          passwd=password, db=database, port=3306)
     cur = db.cursor()
-    query = ("SELECT GROUP_CONCAT(cities.name ORDER BY cities.id  "
-             "ASC SEPARATOR ', ') "
-             "FROM cities JOIN states ON cities.state_id = states.id "
-             "WHERE states.name = %s ")
 
+    query = ("SELECT cities.name FROM cities "
+             "INNER JOIN states ON states.id=cities.state_id "
+             "WHERE states.name=%s")
     cur.execute(query, (state_name,))
 
-    result = cur.fetchone()[0]
+    rows = cur.fetchall()
 
-    if result:
-        print(result)
-
+    city_names = list(row[0] for row in rows)
+    print(", ".join(city_names))
     cur.close()
     db.close()
 

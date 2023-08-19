@@ -18,7 +18,7 @@ def display_value(username, password, database, nameSearch):
                          port=3306)
     cur = db.cursor()
 
-    query = ("SELECT * FROM states WHERE name = '{}' "
+    query = ("SELECT * FROM states WHERE name LIKE BINARY '{}' "
              "ORDER BY id ASC".format(nameSearch))
     cur.execute(query)
 
