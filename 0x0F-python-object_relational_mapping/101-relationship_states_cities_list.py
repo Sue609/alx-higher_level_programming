@@ -18,6 +18,7 @@ def list_states_and_cities(username, password, dbName):
 
     db_url = f'mysql+mysqldb://{username}:{password}@localhost:3306/{dbName}'
     engine = create_engine(db_url, pool_pre_ping=True)
+    Base.metadata.create_all(engine)
 
     Session = sessionmaker(bind=engine)
     session = Session()
