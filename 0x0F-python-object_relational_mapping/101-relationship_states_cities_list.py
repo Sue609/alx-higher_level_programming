@@ -24,10 +24,10 @@ def list_states_and_cities(username, password, dbName):
 
     states = session.query(State).order_by(State.id).all()
 
-    for state in states:
-        print(f"{state.id}: {state.name}")
-        for city in state.cities:
-            print(f"   {city.id}: {city.name}")
+    for row in states:
+        print("{}: {}".format(row.id, row.name))
+        for city in row.cities:
+            print("    {}: {}".format(city.id, city.name))
 
     session.commit()
     session.close()

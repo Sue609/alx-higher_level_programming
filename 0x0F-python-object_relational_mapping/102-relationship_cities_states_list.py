@@ -11,7 +11,7 @@ from relationship_city import City
 
 def list_cities_with_states(username, password, db_name):
     """List all City objects with their corresponding State objects"""
-    
+ 
     db_url = (f'mysql+mysqldb://{username}:{password}@localhost/{db_name}')
     engine = create_engine(db_url, pool_pre_ping=True)
 
