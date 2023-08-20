@@ -16,7 +16,7 @@ def list_states_and_cities(username, password, dbName):
     Script that lists all states objects and corresponding city objects.
     """
 
-    db_url = f'mysql+mysqldb://{username}:{password}@localhost:3306/{dbName}'
+    db_url = f'mysql+mysqldb://{username}:{password}@localhost/{dbName}'
     engine = create_engine(db_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
