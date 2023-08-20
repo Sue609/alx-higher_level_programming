@@ -6,8 +6,8 @@ This module introduces a function.
 
 import sys
 from relationship_state import State, Base
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy import create_engine
+from sqlalchemy.orm import Session
+from sqlalchemy import (create_engine)
 from relationship_city import City
 
 
@@ -20,8 +20,7 @@ def list_states_and_cities(username, password, dbName):
     engine = create_engine(db_url, pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
-    Session = sessionmaker(bind=engine)
-    session = Session()
+    session = Session(engine)
 
     states = session.query(State).order_by(State.id).all()
 
@@ -30,8 +29,13 @@ def list_states_and_cities(username, password, dbName):
         for city in state.cities:
             print(f"   {city.id}: {city.name}")
 
+    session.commit()
     session.close()
 
 
 if __name__ == "__main__":
-    list_states_and_cities(sys.argv[1], sys.argv[2], sys.argv[3])
+    username = sys.argv[1]
+    password = sys.argv[2]
+    dbName = sys.argv[3]
+
+    list_states_and_cities(username, password, dbName)
