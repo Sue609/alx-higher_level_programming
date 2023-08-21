@@ -21,13 +21,13 @@ def insert_state(username, password, dbname):
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    new_state = State(id=6, name='Louisiana')
+    new_state = State(name='Louisiana')
     session.add(new_state)
 
     session.commit()
 
     print(new_state.id)
- 
+
 
 if __name__ == "__main__":
     username = sys.argv[1]
