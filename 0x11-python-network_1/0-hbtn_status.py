@@ -5,8 +5,10 @@ Python script that fetches https://alx-intranet.hbtn.io/status.
 
 import urllib.request
 
+url = 'https://alx-intranet.hbtn.io/status'
+
 try:
-    with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as response:
+    with urllib.request.urlopen(url) as response:
         content = response.read()
         print("Body response:")
         print(f"\t- type: {type(content)}")
