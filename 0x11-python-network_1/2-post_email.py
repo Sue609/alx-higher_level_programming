@@ -9,15 +9,17 @@ import sys
 import urllib.request
 import urllib.parse
 
-url = sys.argv[1]
-email = sys.argv[2]
 
-try:
-    data = urllib.parse.urlencode({'email': email}).encode('utf-8')
-    req = urllib.request.Request(url, data=data, method='POST')
+if __name__ == "__main__":
+    url = sys.argv[1]
+    email = sys.argv[2]
+    try:
+        data = urllib.parse.urlencode({'email': email}).encode("ascii")
+        req = urllib.request.Request(url, data)
 
-    with urllib.request.urlopen(req) as response:
-        body = response.read().decode('utf-8')
-        print(f"{body}")
-except Exception as e:
-    print(f"An error occurred: {e}")
+        with urllib.request.urlopen(req) as response:
+            body = response.read().decode('utf-8')
+            print(f"{body}")
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
