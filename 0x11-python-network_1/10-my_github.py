@@ -14,8 +14,9 @@ if __name__ == "__main__":
 
     url = "https://api.github.com/user"
 
-    headers = {"Authorization": f"Basic {username}:{password}"}
-    response = requests.get(url, headers=headers)
+    auth = (username, password)
+
+    response = requests.get(url, auth=auth)
 
     if response.status_code == 200:
         user_data = response.json()
