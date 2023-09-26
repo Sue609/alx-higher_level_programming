@@ -9,8 +9,6 @@ const content = process.argv[3];
 if (!filePath || !content) {
   process.exit(1);
 }
-fs.writeFile(filePath, content, 'utf-8', (err) => {
-  if (err) {
-    console.error(err);
-  }
+fs.writeFile(filePath, content, error => {
+  if (error) console.log(error);
 });
